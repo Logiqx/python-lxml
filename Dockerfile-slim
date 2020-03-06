@@ -1,0 +1,13 @@
+ARG PYTHON_VERSION=3.8
+ARG DEBIAN_VERSION=buster
+
+FROM python:${PYTHON_VERSION}-slim-${DEBIAN_VERSION} AS builder
+
+RUN pip install --user --no-cache-dir lxml==4.5.*
+
+FROM python:${PYTHON_VERSION}-slim-${DEBIAN_VERSION}
+	
+RUN apt-get update && apt-get install -y libxml2 libxslt1.1 && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /root/.local/lib/python3.8/site-packages/ /usr/local/lib/python3.8/site-packages/
