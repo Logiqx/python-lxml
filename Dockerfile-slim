@@ -1,9 +1,9 @@
-ARG PYTHON_VERSION=3.8
+ARG PYTHON_VERSION=3.9
 ARG DEBIAN_VERSION=buster
 
 FROM python:${PYTHON_VERSION}-slim-${DEBIAN_VERSION} AS builder
 
-RUN pip install --user --no-cache-dir lxml==4.5.*
+RUN pip install --user --no-cache-dir lxml==4.6.*
 
 FROM python:${PYTHON_VERSION}-slim-${DEBIAN_VERSION}
 	

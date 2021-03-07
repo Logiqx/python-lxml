@@ -1,5 +1,5 @@
-ARG PYTHON_VERSION=3.8
-ARG ALPINE_VERSION=3.11
+ARG PYTHON_VERSION=3.9
+ARG ALPINE_VERSION=3.13
 
 FROM python:${PYTHON_VERSION}-alpine${ALPINE_VERSION} AS builder
 
@@ -7,7 +7,7 @@ RUN apk add --no-cache g++
 
 RUN apk add --no-cache libxml2-dev libxslt-dev
 
-RUN pip install --user --no-cache-dir lxml==4.5.*
+RUN pip install --user --no-cache-dir lxml==4.6.*
 
 FROM python:${PYTHON_VERSION}-alpine${ALPINE_VERSION}
 
