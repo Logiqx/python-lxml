@@ -9,6 +9,8 @@ RUN apk add --no-cache libxml2-dev libxslt-dev
 
 RUN pip install --user --no-cache-dir lxml==4.6.*
 
+RUN chmod 755 /root/.local/lib/*/site-packages
+
 FROM python:${PYTHON_VERSION}-alpine${ALPINE_VERSION}
 
 RUN apk add --no-cache libxml2 libxslt
